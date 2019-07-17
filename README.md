@@ -15,12 +15,12 @@ npm install --save xsj-react-article
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'xsj-react-article'
+import Article from 'xsj-react-article'
 
 class Example extends Component {
   render () {
     return (
-      <MyComponent />
+      <Article content={this.state.content} style={{fontSize: '16px', lineHeight: '24px'}} />
     )
   }
 }

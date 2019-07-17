@@ -1,13 +1,28 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 
-import ExampleComponent from 'xsj-react-article'
+import Article from 'xsj-react-article'
 
 export default class App extends Component {
-  render () {
+  constructor(props) {
+    super(props)
+    this.state = {
+      content: ''
+    }
+  }
+
+  render() {
     return (
       <div>
-        <ExampleComponent text='Modern React component module' />
+        <Article content={this.state.content} style={{fontSize: '16px', lineHeight: '24px', padding: '15px'}} />
       </div>
     )
+  }
+
+  componentDidMount() {
+    fetch('static/data.json')
+      .then(response => response.json())
+      .then(json => {
+        this.setState({content: json.data[0].content})
+      })
   }
 }
