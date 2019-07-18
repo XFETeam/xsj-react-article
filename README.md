@@ -55,8 +55,23 @@ class Example extends Component {
 
 | Name    | Description      | Defalt    | Example                     | Type   |
 | ------- | ---------------- | --------- | --------------------------- | ------ |
-| content | 获取的文章代码段 | undefault | 'article' | string |
+| content | 获取的文章代码段 | undefault | 'test content' | string |
 | style   | 自定义文本样式   | {}        | {fontSize: '16px'}          | object |
+| className | 定义一级类名 | xsj-article | 'my-article' | string |
+| rules | 字符串Dom [匹配规则](https://github.com/mikenikles/html-to-react) | RULE👇 | [rule1,rule2] | array |
+
+默认的规则集：
+
+```jsx
+const RULE =[{
+      shouldProcessNode: function (node) {
+        return node.attribs && node.attribs['class'] === 'detail_con'
+      },
+      processNode: function (node, children, index) {
+        return React.createElement('div', {className: 'xsj-article-content', key: index}, children)
+      }
+    }]
+```
 
 
 

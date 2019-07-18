@@ -10,29 +10,32 @@ export default class ExampleComponent extends Component {
 
   static propTypes = {
     content: PropTypes.string,
-    style: PropTypes.object
+    style: PropTypes.object,
+    rules: PropTypes.array,
+    className: PropTypes.string
   }
+
   static defaultProps = {
-    content: '',
-    style: {}
+    content: 'test content',
+    style: {fontSize: '16px'},
+    className: 'xsj-article',
+    rules: [{
+      shouldProcessNode: function (node) {
+        return node.attribs && node.attribs['class'] === 'detail_con'
+      },
+      processNode: function (node, children, index) {
+        return React.createElement('div', {className: 'xsj-article-content', key: index}, children)
+      }
+    }]
   }
 
   render() {
 
-    const {content, style} = this.props
+    const {content, rules, ...restProps} = this.props
 
     // init content
     const processNodeDefinitions = new HtmlToReact.ProcessNodeDefinitions(React)
-    const processingInstructions = [
-      // clear
-      {
-        shouldProcessNode: function (node) {
-          return node.attribs && node.attribs['class'] === 'detail_con'
-        },
-        processNode: function (node, children, index) {
-          return React.createElement('div', {className: 'article-content', key: index}, children)
-        }
-      },
+    const processingInstructions = rules.concat([
       // default
       {
         shouldProcessNode: function () {
@@ -40,13 +43,13 @@ export default class ExampleComponent extends Component {
         },
         processNode: processNodeDefinitions.processDefaultNode
       }
-    ]
+    ])
     const htmlToReactParser = new HtmlToReactParser()
     const ReactComponent = htmlToReactParser.parseWithInstructions(content, isValidNode,
       processingInstructions)
 
     return (
-      <div className='article' style={style}>
+      <div {...restProps}>
         {ReactComponent}
       </div>
     )

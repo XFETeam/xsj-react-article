@@ -13,7 +13,11 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <Article content={this.state.content} style={{fontSize: '16px', lineHeight: '24px', padding: '15px'}} />
+        <Article content={this.state.content} style={{
+          fontSize: '16px',
+          lineHeight: '24px',
+          padding: '15px'
+        }} />
       </div>
     )
   }
@@ -22,6 +26,7 @@ export default class App extends Component {
     fetch('static/data.json')
       .then(response => response.json())
       .then(json => {
+        console.log(json)
         this.setState({content: json.data[0].content})
       })
   }
