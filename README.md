@@ -57,7 +57,7 @@ class Example extends Component {
 | ------- | ---------------- | --------- | ------ |
 | content | 获取的文章代码段 | 'test content' | string |
 | style   | 自定义文本样式   | {fontSize: '16px'} | object |
-| className | 定义一级类名 | xsj-article | string |
+| className | 自定义一级类名 | xsj-article | string |
 | rules | 字符串Dom [匹配规则](https://github.com/mikenikles/html-to-react) | RULES👇 | array |
 
 默认的规则集：
