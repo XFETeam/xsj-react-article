@@ -25,6 +25,14 @@ class Example extends Component {
   }
 }
 ```
+## Props
+
+| Name    | Description      | Defalt    | Example                     | Type   |
+| ------- | ---------------- | --------- | --------------------------- | ------ |
+| content | 获取的文章代码段 | undefault | '<div><p>article</p></div>' | string |
+| style   | 自定义文本样式   | {}        | {fontSize: '16px'}          | object |
+
+
 
 ## License
 
