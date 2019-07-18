@@ -29,7 +29,7 @@ class Example extends Component {
 
 | Name    | Description      | Defalt    | Example                     | Type   |
 | ------- | ---------------- | --------- | --------------------------- | ------ |
-| content | 获取的文章代码段 | undefault | '<div><p>article</p></div>' | string |
+| content | 获取的文章代码段 | undefault | 'article' | string |
 | style   | 自定义文本样式   | {}        | {fontSize: '16px'}          | object |
 
 
